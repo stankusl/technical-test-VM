@@ -1,0 +1,8 @@
+<ng-container *ngIf="(error$ | async) as error">
+<!--  <pre>-->
+<!--    {{ error | json }}-->
+<!--  </pre>-->
+  <p *ngIf="error" class="bg-danger">
+    {{ error?.message }}
+  </p>
+</ng-container>

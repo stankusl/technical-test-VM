@@ -1,0 +1,42 @@
+<table class="table">
+
+  <thead class="thead-dark">
+
+    <tr>
+      <th scope="col">City</th>
+
+      <ng-container *ngFor="let temp of (weatherList$ | async), index as i;">
+        <ng-container *ngIf="i === 0">
+          <ng-container *ngIf="temp?.list">
+            <th scope="col" *ngFor="let temps of (temp?.list)">
+
+              <ng-container *ngIf="temps">
+                {{ ((temps!.dt * 1000) | date:'dd/MM/yyyy') }}
+              </ng-container>
+
+            </th>
+          </ng-container>
+
+          </ng-container>
+      </ng-container>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let cityTemps of (weatherList$ | async)">
+
+      <ng-container *ngIf="cityTemps !== null">
+        <td id="city-result">{{ cityTemps?.city?.name }}</td>
+
+        <td *ngFor="let tempValues of cityTemps?.list">
+          {{ tempValues?.main?.temp | number:'1.0-0'}} °
+        </td>
+      </ng-container>
+
+    </tr>
+
+  </tbody>
+</table>
